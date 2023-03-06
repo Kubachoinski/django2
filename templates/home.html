@@ -1,0 +1,23 @@
+{% extends 'base_bulma.html' %}
+
+
+{% block title %}Ordering App{% endblock title %}
+{% block h1 %}Homepage{% endblock h1 %}
+
+{% block main %}
+    {% if user.is_authenticated %}
+      <p>Cześć, {{ user.username }}</p>
+      <div style="float:right;" ><a class='button is-right' href="{% url 'logout' %}">Log out</a></div>
+      <div style="float:right;" ><a class='button is-right' href="{% url 'item_create' %}">NewItem</a></div>
+    {% else %}
+      <p> nie jesteś zalogowany </p>
+      <div style="float:right;" ><a class='button is-right' href="{% url 'login' %}">Log in</a></div>
+      <div style="float:right;" ><a class='button is-right' href="{% url 'customer_create' %}">Sign In</a></div>
+    {% endif %}
+
+  <ul>
+    <li><a href="{% url 'customer_table' %}">Customers</a></li>
+    <li>Items</li>
+    <li>Orders</li>
+  </ul>
+{% endblock main %}
